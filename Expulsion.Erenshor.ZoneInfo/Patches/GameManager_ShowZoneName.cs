@@ -31,7 +31,7 @@ namespace Expulsion.Erenshor.ZoneInfo.Patches
                 
                 // Dungeons
                 "Island Tomb" => "Island Tomb\n<size=75%>Level 3 - 7</size>",
-                "The Bone Pits" => "The Bone Pits\n<size=75%>Level 4 - 9</size>",
+                "The Bonepits" => "The Bonepits\n<size=75%>Level 4 - 9</size>",
                 "Old Krakengard" => "Old Krakengard\n<size=75%>Level 8 - 13</size>",
                 "Underspine Hollow" => "Underspine Hollow\n<size=75%>Level 10 - 16</size>",
                 "Lost Cellar" => "Lost Cellar\n<size=75%>Level 13 - 20</size>",

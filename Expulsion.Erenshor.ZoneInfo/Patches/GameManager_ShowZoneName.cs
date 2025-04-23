@@ -1,4 +1,6 @@
-﻿using HarmonyLib;
+﻿using System;
+using HarmonyLib;
+using UnityEngine.SceneManagement;
 
 namespace Expulsion.Erenshor.ZoneInfo.Patches
 {
@@ -7,47 +9,77 @@ namespace Expulsion.Erenshor.ZoneInfo.Patches
     {
         public static void Postfix(GameManager __instance, string _name)
         {
-            __instance.ZoneName.text = _name switch
+            var sceneName = SceneManager.GetActiveScene().name;
+
+            __instance.ZoneName.text += sceneName switch
             {
                 // Open World Zones
-                "Port Azure" => "Port Azure\n<size=75%>Level 1 - 35</size>",
-                "Stowaway's Step" => "Stowaway's Step\n<size=75%>Level 1 - 6</size>",
-                "Hidden Hills" => "Hidden Hills\n<size=75%>Level 4 - 8</size>",
-                "Faerie's Brake" => "Faerie's Brake\n<size=75%>Level 3 - 10</size>",
-                "Vitheo's Watch" => "Vitheo's Watch\n<size=75%>Level 4 - 10</size>",
-                "Fernalla's Revival Plains" => "Fernalla's Revival Plains\n<size=75%>Level 6 - 18</size>",
-                "Duskenlight Coast" => "Duskenlight Coast\n<size=75%>Level 7 - 19</size>",
-                "Rottenfoot" => "Rottenfoot\n<size=75%>Level 12 - 20</size>",
-                "Blacksalt Strand" => "Blacksalt Strand\n<size=75%>Level 14 - 21</size>",
-                "Braxonian Desert" => "Braxonian Desert\n<size=75%>Level 16 - 25</size>",
-                "Loomingwood" => "Loomingwood\n<size=75%>Level 18 - 26</size>",
-                "Silkengrass Meadowlands" => "Silkengrass Meadowlands\n<size=75%>Level 10 - 30</size>",
-                "Windwashed Pass" => "Windwashed Pass\n<size=75%>Level 15 - 30</size>",
-                "Malaroth's Nesting Grounds" => "Malaroth's Nesting Grounds\n<size=75%>Level 20 - 30</size>",
-                "Soluna's Landing" => "Soluna's Landing\n<size=75%>Level 25 - 33</size>",
-                "The Blight" => "The Blight\n<size=75%>Level 26 - 33</size>",
-                "Ripper's Keep" => "Ripper's Keep\n<size=75%>Level 28 - 33</size>",
-                "Azynthi's Garden" => "Azynthi's Garden\n<size=75%>Level 30 - 35</size>",
-                
-                // Dungeons
-                "Island Tomb" => "Island Tomb\n<size=75%>Level 3 - 7</size>",
-                "The Bonepits" => "The Bonepits\n<size=75%>Level 4 - 9</size>",
-                "Old Krakengard" => "Old Krakengard\n<size=75%>Level 8 - 13</size>",
-                "Underspine Hollow" => "Underspine Hollow\n<size=75%>Level 10 - 16</size>",
-                "Lost Cellar" => "Lost Cellar\n<size=75%>Level 13 - 20</size>",
-                "Mysterious Portal - Duskenlight Coast" => "Mysterious Portal - Duskenlight Coast\n<size=75%>Level 14 - 15</size>",
-                "Mysterious Portal - Fernalla's Ritual Plains" => "Mysterious Portal - Fernalla's Ritual Plains\n<size=75%>Level 21 - 24</size>",
-                "Mysterious Portal - Ripper's Keep" => "Mysterious Portal - Ripper's Keep\n<size=75%>Level 28 - 35</size>",
-                "Elderstone Mines" => "Elderstone Mines\n<size=75%>Level 16 - 21</size>",
-                "Rockshade Hold" => "Rockshade Hold\n<size=75%>Level 22 - 26</size>",
-                "Abyssal Lake" => "Abyssal Lake\n<size=75%>Level 24 - 33</size>",
-                "Fallen Braxonia" => "Fallen Braxonia\n<size=75%>Level 28 - 33</size>",
-                "Prielian Cascade" => "Prielian Cascade\n<size=75%>Level 28 - 35</size>",
-                "Vitheo's Rest" => "Vitheo's Rest\n<size=75%>Level 22 - 35</size>",
-                "Jaws of Sivakaya" => "Jaws of Sivakaya\n<size=75%>Level 30 - 35</size>",
+                "Azure" => $"\n{StyleString("Level 1 - 35")}",
+                "Stowaway" => $"\n{StyleString("Level 1 - 6")}",
+                "Hidden" => $"\n{StyleString("Level 4 - 8")}",
+                "Brake" => $"\n{StyleString("Level 3 - 10")}",
+                "Vitheo" => $"\n{StyleString("Level 4 - 10")}",
+                "FernallaField" => $"\n{StyleString("Level 6 - 18")}",
+                "Duskenlight" => $"\n{StyleString("Level 7 - 19")}",
+                "Rottenfoot" => $"\n{StyleString("Level 12 - 20")}",
+                "SaltedStrand" => $"\n{StyleString("Level 14 - 21")}",
+                "Braxonian" => $"\n{StyleString("Level 16 - 25")}",
+                "Loomingwood" => $"\n{StyleString("Level 18 - 26")}",
+                "Silkengrass" => $"\n{StyleString("Level 10 - 30")}",
+                "Windwashed" => $"\n{StyleString("Level 15 - 30")}",
+                "Malaroth" => $"\n{StyleString("Level 20 - 30")}",
+                "Soluna" => $"\n{StyleString("Level 25 - 33")}",
+                "Blight" => $"\n{StyleString("Level 26 - 33")}",
+                "Ripper" => $"\n{StyleString("Level 28 - 33")}",
+                "Azynthi" => $"\n{StyleString("Level 30 - 35")}",
 
-                _ => __instance.ZoneName.text + "\n<size=25%>Unknown Zone, Please Report</size>"
+                // Dungeons
+                "Tutorial" => $"\n{StyleString("Level 3 - 7")}",
+                "Bonepits" => $"\n{StyleString("Level 4 - 9")}",
+                "Krakengard" => $"\n{StyleString("Level 8 - 13")}",
+                "Underspine" => $"\n{StyleString("Level 10 - 16")}",
+                "Undercity" => $"\n{StyleString("Level 13 - 20")}",
+                "DuskenPortal" => $"\n{StyleString("Level 14 - 15")}",
+                "FernallaPortal" => $"\n{StyleString("Level 21 - 24")}",
+                "RipperPortal" => $"\n{StyleString("Level 28 - 35")}",
+                "Elderstone" => $"\n{StyleString("Level 16 - 21")}",
+                "Rockshade" => $"\n{StyleString("Level 22 - 26")}",
+                "Abyssal" => $"\n{StyleString("Level 24 - 33")}",
+                "Braxonia" => $"\n{StyleString("Level 28 - 33")}",
+                "PrielPlateau" => $"\n{StyleString("Level 28 - 35")}",
+                "VitheosEnd" => $"\n{StyleString("Level 22 - 35")}",
+                "Jaws" => $"\n{StyleString("Level 30 - 35")}",
+
+                // Events
+                "ShiveringStep" => $"\n{StyleString("Level 6 - 12")}",
+                "ShiveringTomb" => $"\n{StyleString("Level 6 - 12")}",
+                _ => $"\n<size=25%>Unknown Zone of Name: [{sceneName} | {_name}], Please Report</size>"
             };
+        }
+
+        private static string StyleString(string text)
+        {
+            var playerLevel = GameData.PlayerStats.Level;
+
+            var zoneLevelMinMax = text.Replace("Level ", "").Split('-');
+
+            if (zoneLevelMinMax.Length != 2 ||
+                !int.TryParse(zoneLevelMinMax[0].Trim(), out var minLevel) ||
+                !int.TryParse(zoneLevelMinMax[1].Trim(), out var maxLevel))
+            {
+                return $"<size=50%>{text}</size>";
+            }
+
+            var colorHex = playerLevel switch
+            {
+                _ when playerLevel < minLevel - 5 => "#f44336",
+                _ when playerLevel < minLevel => "#ff9800",
+                _ when playerLevel <= maxLevel => "#ffeb3b",
+                _ when playerLevel <= maxLevel + 5 => "#4caf50",
+                _ => "#808080"
+            };
+
+            return $"<size=50%><color={colorHex}>{text}</color></size>";
         }
     }
 }

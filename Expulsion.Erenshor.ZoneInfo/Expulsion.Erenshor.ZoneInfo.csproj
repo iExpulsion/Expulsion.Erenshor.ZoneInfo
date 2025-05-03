@@ -27,6 +27,12 @@
       <Reference Include="UnityEngine.UI">
         <HintPath>D:\Games\_SteamGames\steamapps\common\Erenshor\Erenshor_Data\Managed\UnityEngine.UI.dll</HintPath>
       </Reference>
+      <Reference Include="UnityEngine.UnityWebRequestModule">
+        <HintPath>D:\Games\_SteamGames\steamapps\common\Erenshor\Erenshor_Data\Managed\UnityEngine.UnityWebRequestModule.dll</HintPath>
+      </Reference>
+      <Reference Include="UnityEngine.UnityWebRequestWWWModule">
+        <HintPath>D:\Games\_SteamGames\steamapps\common\Erenshor\Erenshor_Data\Managed\UnityEngine.UnityWebRequestWWWModule.dll</HintPath>
+      </Reference>
     </ItemGroup>
 
 </Project>

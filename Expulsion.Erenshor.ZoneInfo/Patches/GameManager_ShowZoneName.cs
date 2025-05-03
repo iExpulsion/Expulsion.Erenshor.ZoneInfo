@@ -32,6 +32,7 @@ namespace Expulsion.Erenshor.ZoneInfo.Patches
                 "Blight" => $"\n{StyleString("Level 26 - 33")}",
                 "Ripper" => $"\n{StyleString("Level 28 - 33")}",
                 "Azynthi" => $"\n{StyleString("Level 30 - 35")}",
+                "AzynthiClear" => $"\n{StyleString("Level 30 - 35")}",
 
                 // Dungeons
                 "Tutorial" => $"\n{StyleString("Level 3 - 7")}",

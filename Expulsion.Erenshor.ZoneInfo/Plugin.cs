@@ -6,9 +6,9 @@ namespace Expulsion.Erenshor.ZoneInfo
     [BepInPlugin(PluginGuid, PluginName, PluginVersion)]
     public class Plugin : BaseUnityPlugin
     {
-        private const string PluginGuid = "Expulsion.Erenshor.ZoneInfo";
-        private const string PluginName = "ZoneInfo";
-        private const string PluginVersion = "1.0.2";
+        public const string PluginGuid = "Expulsion.Erenshor.ZoneInfo";
+        public const string PluginName = "ZoneInfo";
+        public const string PluginVersion = "1.0.3";
 
         private Harmony? _harmonyInstance;
 
